@@ -1,0 +1,29 @@
+import java.util.HashMap;
+
+public class FirstNonRepeatingChar {
+    public static void main(String[] args) {
+        String str = "swiss";
+        HashMap<Character, Integer> map = new HashMap<>();
+
+        for (char ch : str.toCharArray()) {
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+        }
+
+        char result = 0;
+        boolean found = false;
+
+        for (char ch : str.toCharArray()) {
+            if (map.get(ch) == 1) {
+                result = ch;
+                found = true;
+                break;
+            }
+        }
+
+        if (found) {
+            System.out.println(result);
+        } else {
+            System.out.println(-1);
+        }
+    }
+}
