@@ -1,0 +1,14 @@
+com/neurofleetx/fleet/entity/Vehicle.class
+com/neurofleetx/auth/entity/User.class
+com/neurofleetx/auth/entity/Role.class
+com/neurofleetx/route/entity/Route$RouteBuilder.class
+com/neurofleetx/auth/repository/UserRepository.class
+com/neurofleetx/auth/entity/Role$RoleBuilder.class
+com/neurofleetx/route/entity/Route.class
+com/neurofleetx/route/repository/RouteRepository.class
+com/neurofleetx/fleet/repository/VehicleRepository.class
+com/neurofleetx/dashboard/service/DashboardService.class
+com/neurofleetx/auth/entity/User$UserBuilder.class
+com/neurofleetx/route/entity/RouteStop.class
+com/neurofleetx/route/entity/RouteStop$RouteStopBuilder.class
+com/neurofleetx/fleet/entity/Vehicle$VehicleBuilder.class

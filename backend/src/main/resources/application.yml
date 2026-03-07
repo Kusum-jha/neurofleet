@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: NeuroFleetX Backend
+  datasource:
+    url: jdbc:mysql://localhost:3306/neurofleetx
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+  sql:
+    init:
+      mode: always
+      continue-on-error: true
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+logging:
+  level:
+    root: INFO
+    com.neurofleetx: DEBUG
+
+jwt:
+  secret: neurofleetx-secret-key-change-in-production-12345678901234567890
+  expiration: 86400000
+
+cors:
+  allowed-origins: http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173
+  allowed-methods: GET,POST,PUT,DELETE,OPTIONS
+  allowed-headers: '*'
+  allow-credentials: true
