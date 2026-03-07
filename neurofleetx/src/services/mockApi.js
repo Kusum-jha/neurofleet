@@ -107,7 +107,9 @@ export const mockAuthService = {
       setTimeout(() => {
         const user = MOCK_USERS[email];
         if (user) {
-          localStorage.setItem('neurofleetx_token', MOCK_TOKEN);
+          // For demo accounts, accept any password
+          const token = 'mock-jwt-token-' + Date.now();
+          localStorage.setItem('neurofleetx_token', token);
           localStorage.setItem('neurofleetx_user', JSON.stringify({
             id: user.id,
             username: user.username,
@@ -117,7 +119,7 @@ export const mockAuthService = {
           resolve({
             success: true,
             data: {
-              token: MOCK_TOKEN,
+              token: token,
               userId: user.id,
               username: user.username,
               email: email,
@@ -126,10 +128,35 @@ export const mockAuthService = {
             message: 'Login successful',
           });
         } else {
-          resolve({
-            success: false,
-            message: 'User not found. Try: admin@neurofleetx.com',
-          });
+          // For locally registered users, check password
+          const users = JSON.parse(localStorage.getItem('neurofleetx_users') || '[]');
+          const localUser = users.find(u => u.email === email && u.password === password);
+          if (localUser) {
+            const token = 'local-token-' + Date.now();
+            localStorage.setItem('neurofleetx_token', token);
+            localStorage.setItem('neurofleetx_user', JSON.stringify({
+              id: localUser.id,
+              username: localUser.username,
+              email: email,
+              role: localUser.role || role,
+            }));
+            resolve({
+              success: true,
+              data: {
+                token: token,
+                userId: localUser.id,
+                username: localUser.username,
+                email: email,
+                role: localUser.role || role,
+              },
+              message: 'Login successful',
+            });
+          } else {
+            resolve({
+              success: false,
+              message: 'User not found. Try admin@neurofleetx.com or create an account',
+            });
+          }
         }
       }, 500);
     });

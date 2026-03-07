@@ -55,9 +55,11 @@ export const loginUser = (email, password) => {
   
   // Store auth session
   const authData = {
+    id: user.id,
     userId: user.id,
     email: user.email,
     username: user.username,
+    role: user.role || 'CUSTOMER',
     loginTime: new Date().toISOString()
   };
   
@@ -176,6 +178,7 @@ export const createDemoUsers = () => {
         email: 'demo@neurofleetx.com',
         password: 'DemoPassword123!',
         username: 'demo_user',
+        role: 'CUSTOMER',
         createdAt: new Date().toISOString(),
         profile: {
           firstName: 'Demo',
@@ -183,6 +186,21 @@ export const createDemoUsers = () => {
           bio: 'Welcome to NeuroFleetX! 🚀',
           location: 'San Francisco, CA',
           phone: '+1 (555) 123-4567'
+        }
+      },
+      {
+        id: '2',
+        email: 'admin@neurofleetx.com',
+        password: 'Admin@123',
+        username: 'admin_user',
+        role: 'ADMIN',
+        createdAt: new Date().toISOString(),
+        profile: {
+          firstName: 'Admin',
+          lastName: 'User',
+          bio: 'System Administrator',
+          location: 'San Francisco, CA',
+          phone: '+1 (555) 987-6543'
         }
       }
     ];

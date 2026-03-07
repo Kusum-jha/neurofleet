@@ -16,7 +16,7 @@ import RoutePlanner from './pages/RoutePlanner';
 import MaintenancePage from './pages/MaintenancePage';
 import BookingsPage from './pages/BookingsPage';
 import AnalyticsPage from './pages/AnalyticsPage';
-import { createDemoUsers } from './utils/auth';
+import { createDemoUsers, getCurrentUser, loginUser } from './utils/auth';
 import './styles/theme.css';
 import './styles/pages.css';
 import './styles/components.css';
@@ -27,8 +27,13 @@ import './App.css';
 
 function App() {
   useEffect(() => {
-    // Initialize demo user on first load
+    // Initialize demo users on first load
     createDemoUsers();
+    
+    // Auto-login as admin if not already logged in
+    if (!getCurrentUser()) {
+      loginUser('admin@neurofleetx.com', 'Admin@123');
+    }
   }, []);
 
   return (
@@ -154,8 +159,8 @@ function App() {
         />
 
         {/* Default Route */}
-        <Route path="/" element={<Navigate to="/home" />} />
-        <Route path="*" element={<Navigate to="/home" />} />
+        <Route path="/" element={<Navigate to="/admin" />} />
+        <Route path="*" element={<Navigate to="/admin" />} />
       </Routes>
     </Router>
   );

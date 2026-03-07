@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS maintenance_records (
   status VARCHAR(20) DEFAULT 'SCHEDULED',
   scheduled_date DATE NOT NULL,
   completed_date DATE,
-  cost DECIMAL(10, 2),
+  cost DOUBLE,
   notes TEXT,
   created_by BIGINT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Navigation from '../../components/Navigation';
+import Navigation from '../components/Navigation';
 import axios from 'axios';
-import '../../styles/dashboard.css';
-import '../../styles/pages.css';
+import '../styles/dashboard.css';
+import '../styles/pages.css';
 
 const MaintenancePage = () => {
   const [maintenanceRecords, setMaintenanceRecords] = useState([]);

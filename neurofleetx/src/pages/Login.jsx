@@ -5,7 +5,7 @@ import '../styles/pages.css';
 
 const Login = () => {
   const [email, setEmail] = useState('admin@neurofleetx.com');
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState('Admin@123');
   const [role, setRole] = useState('ADMIN');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
